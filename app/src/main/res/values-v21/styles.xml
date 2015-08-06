@@ -4,13 +4,8 @@
     </style>
 
     <style name="LeBubbleTextView">
-        <!--<item name="cardBackgroundColor">@color/cardview_light_background</item>-->
         <item name="bubbleCornerRadius">@dimen/bubbleView_default_radius</item>
         <item name="bubbleTextSize">@dimen/bubbleView_default_text_size</item>
-        <!--<item name="cardElevation">@dimen/cardview_default_elevation</item>-->
-        <!--<item name="cardMaxElevation">@dimen/cardview_default_elevation</item>-->
-        <!--<item name="cardUseCompatPadding">false</item>-->
-        <!--<item name="cardPreventCornerOverlap">true</item>-->
     </style>
 
     <style name="LeBubbleTextView.Light">
