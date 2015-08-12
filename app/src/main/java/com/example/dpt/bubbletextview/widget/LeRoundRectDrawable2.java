@@ -121,4 +121,5 @@ public class LeRoundRectDrawable2 extends Drawable {
         mPaint.setColor(color);
         invalidateSelf();
     }
+
 }

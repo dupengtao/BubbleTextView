@@ -50,6 +50,7 @@ public class LeBubbleTextView extends RelativeLayout implements Runnable {
     private TextView tvContext;
     private String contentText;
 
+
     public LeBubbleTextView(Context context) {
         super(context);
         initialize(context, null, 0);
@@ -84,6 +85,7 @@ public class LeBubbleTextView extends RelativeLayout implements Runnable {
 
         a.recycle();
         initContent(radius, backgroundColor, textColor, textSize, contentText);
+
     }
 
     private void setRelativePosition(float relativePosition) {
@@ -131,7 +133,7 @@ public class LeBubbleTextView extends RelativeLayout implements Runnable {
         conRl.setId(View.generateViewId());
         LayoutParams conRlParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         //conRl.setLayoutParams(conRlParams);
-        LeRoundRectDrawable2 roundRectDrawable = new LeRoundRectDrawable2(backgroundColor, radius);
+        LeRoundRectDrawable2 roundRectDrawable = new LeRoundRectDrawable2(backgroundColor,radius);
         conRl.setBackground(roundRectDrawable);
         conRl.addView(tvContext);
 
@@ -166,10 +168,6 @@ public class LeBubbleTextView extends RelativeLayout implements Runnable {
 
         Bitmap source = BitmapFactory.decodeResource(this.getResources(), arrowRes);
         arrowImage.setImageBitmap(rotateBitmap(source, r));
-
-        //arrowParams.addRule(RelativeLayout.START_OF, conRl.getId());
-        //params.setMargins(dip2px(10), 0, 0, 0);
-        //arrowImage.setLayoutParams(params);
 
         this.addView(arrowImage, arrowParams);
         this.addView(conRl, conRlParams);
