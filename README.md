@@ -31,6 +31,23 @@ BubbleTextView
     </declare-styleable>
 ```
 
+## Custom Style
+```xml
+    <style name="LeBubbleTextView">
+        <item name="bubbleCornerRadius">@dimen/bubbleView_default_radius</item>
+        <item name="bubbleTextSize">@dimen/bubbleView_default_text_size</item>
+    </style>
+
+    <style name="LeBubbleTextView.Light">
+        <item name="bubbleBackgroundColor">@color/bubbleView_light_background</item>
+        <item name="bubbleTextColor">@color/bubbleView_light_text_color</item>
+    </style>
+    <style name="LeBubbleTextView.Dark">
+        <item name="bubbleBackgroundColor">@color/bubbleView_dark_background</item>
+        <item name="bubbleTextColor">@color/bubbleView_dark_text_color</item>
+    </style>
+```
+
 ## License
 
     Copyright 2015
