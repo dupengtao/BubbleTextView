@@ -19,5 +19,5 @@
     <!-- Default radius for LeBubbleView corners. -->
     <dimen name="bubbleView_default_radius">4dp</dimen>
     <!-- Default text size for content text. -->
-    <dimen name="bubbleView_default_text_size">14dp</dimen>
+    <dimen name="bubbleView_default_text_size">14sp</dimen>
 </resources>

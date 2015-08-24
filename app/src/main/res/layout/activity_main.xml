@@ -3,49 +3,66 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:paddingLeft="@dimen/activity_horizontal_margin"
-              android:paddingRight="@dimen/activity_horizontal_margin"
-              android:paddingTop="@dimen/activity_vertical_margin"
-              android:paddingBottom="@dimen/activity_vertical_margin"
               tools:context=".MainActivity"
               android:orientation="vertical"
-              android:background="#2196F3"
-              android:gravity="center"
         >
 
-    <com.example.dpt.bubbletextview.widget.LeBubbleTextView
-            android:layout_marginTop="50dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:bubbleText="@string/hello_world"
-            app:relativePosition="50%"
-            app:bubbleArrowDirection="bottom"
-            />
-    <com.example.dpt.bubbletextview.widget.LeBubbleTextView
-            android:layout_marginTop="50dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:bubbleText="@string/hello_world"
-            app:relativePosition="40%"
-            app:bubbleArrowDirection="right"
-            />
-    <com.example.dpt.bubbletextview.widget.LeBubbleTextView
-            android:layout_marginTop="50dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:bubbleText="@string/hello_world"
-            app:relativePosition="60%"
-            app:bubbleArrowDirection="left"
-            style="@style/LeBubbleTextView.Light"
-            />
-    <com.example.dpt.bubbletextview.widget.LeBubbleTextView
-            android:layout_marginTop="50dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:bubbleText="@string/hello_world"
-            app:relativePosition="60%"
-            app:bubbleArrowDirection="top"
-            style="@style/LeBubbleTextView.Light"
-            />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="#F5F5F5"
+            >
 
+        <!-- 深色样式，向下箭头，位置50%-->
+        <com.example.dpt.bubbletextview.widget.LeBubbleTextView
+                android:layout_marginTop="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bubbleText="@string/test"
+                app:relativePosition="50%"
+                app:bubbleArrowDirection="bottom"
+                />
+        <!-- 深色样式，向右箭头，位置50%-->
+        <com.example.dpt.bubbletextview.widget.LeBubbleTextView
+                android:layout_marginTop="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bubbleText="@string/hello_world"
+                app:relativePosition="40%"
+                app:bubbleArrowDirection="right"
+                />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="#212121"
+            >
+        <!-- 浅色样式，向左箭头，位置60%-->
+        <com.example.dpt.bubbletextview.widget.LeBubbleTextView
+                android:layout_marginTop="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bubbleText="@string/test"
+                app:relativePosition="60%"
+                app:bubbleArrowDirection="left"
+                style="@style/LeBubbleTextView.Light"
+                />
+        <!-- 浅色样式，向上箭头，位置60%-->
+        <com.example.dpt.bubbletextview.widget.LeBubbleTextView
+                android:layout_marginTop="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bubbleText="@string/hello_world"
+                app:relativePosition="60%"
+                app:bubbleArrowDirection="top"
+                style="@style/LeBubbleTextView.Light"
+                />
+    </LinearLayout>
 </LinearLayout>

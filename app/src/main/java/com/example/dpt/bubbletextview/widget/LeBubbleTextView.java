@@ -1,6 +1,7 @@
 package com.example.dpt.bubbletextview.widget;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,7 +19,7 @@ import com.example.dpt.bubbletextview.R;
 /**
  * Created by dupengtao on 15/7/25.
  * <p/>
- * <p/>
+ * <declare-styleable name="LeBubbleTextView">
  * <!-- Corner radius for LeBubbleTextView. -->
  * <attr name="bubbleCornerRadius" format="dimension"/>
  * <!-- Background color for LeBubbleTextView. -->
@@ -37,9 +38,11 @@ import com.example.dpt.bubbletextview.R;
  * <enum name="right" value="3"/>
  * <enum name="bottom" value="4"/>
  * </attr>
- * <p/>
  * <!-- direction for arrow. -->
  * <attr name = "relativePosition" format = "fraction" />
+ * <!-- Press state Background color for LeBubbleTextView. -->
+ * <attr name="bubbleBackgroundPressColor" format="color"/>
+ * </declare-styleable>
  */
 public class LeBubbleTextView extends RelativeLayout implements Runnable {
     private Context mContext;
@@ -47,8 +50,9 @@ public class LeBubbleTextView extends RelativeLayout implements Runnable {
     private float relative;
     private RelativeLayout conRl;
     private ImageView arrowImage;
-    private TextView tvContext;
-    private String contentText;
+    private TextView tvContent;
+    private int pressBackgroundColor, backgroundColor;
+    private TintedBitmapDrawable norDrawable ,pressDrawable;
 
 
     public LeBubbleTextView(Context context) {
@@ -71,10 +75,12 @@ public class LeBubbleTextView extends RelativeLayout implements Runnable {
         //TODO custom attribute
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.LeBubbleTextView, defStyleAttr, R.style.LeBubbleTextView_Dark);
         float radius = a.getDimension(R.styleable.LeBubbleTextView_bubbleCornerRadius, 0);
-        int backgroundColor = a.getColor(R.styleable.LeBubbleTextView_bubbleBackgroundColor, 0);
+        backgroundColor = a.getColor(R.styleable.LeBubbleTextView_bubbleBackgroundColor, 0);
+
+        pressBackgroundColor = a.getColor(R.styleable.LeBubbleTextView_bubbleBackgroundPressColor, 0);
         int textColor = a.getColor(R.styleable.LeBubbleTextView_bubbleTextColor, 0);
         float textSize = a.getDimension(R.styleable.LeBubbleTextView_bubbleTextSize, 0);
-        contentText = a.getString(R.styleable.LeBubbleTextView_bubbleText);
+        String contentText = a.getString(R.styleable.LeBubbleTextView_bubbleText);
 
         int intDirection = a.getInt(R.styleable.LeBubbleTextView_bubbleArrowDirection, 3);
         setCurDirection(intDirection);
@@ -118,24 +124,24 @@ public class LeBubbleTextView extends RelativeLayout implements Runnable {
         }
     }
 
-    private void initContent(float radius, int backgroundColor, int textColor, float textSize, String content) {
+    private void initContent(float radius, final int backgroundColor, int textColor, float textSize, String content) {
 
-        tvContext = new TextView(mContext);
-        tvContext.setId(View.generateViewId());
-        tvContext.setTextColor(textColor);
-        tvContext.setTextSize(TypedValue.COMPLEX_UNIT_PX,textSize);
-        tvContext.setText(content);
-        int dp22 = dip2px(22);
-        int dp16 = dip2px(16);
-        tvContext.setPaddingRelative(dp22, dp16, dp22, dp16);
+        tvContent = new TextView(mContext);
+        tvContent.setId(View.generateViewId());
+        tvContent.setTextColor(textColor);
+        tvContent.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+        tvContent.setText(content);
+        int px22 = dip2px(21);
+        int px16 = dip2px(15);
+        tvContent.setPaddingRelative(px22, px16, px22, px16);
 
         conRl = new RelativeLayout(mContext);
         conRl.setId(View.generateViewId());
         LayoutParams conRlParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         //conRl.setLayoutParams(conRlParams);
-        LeRoundRectDrawable2 roundRectDrawable = new LeRoundRectDrawable2(backgroundColor,radius);
+        LeRoundRectDrawable2 roundRectDrawable = new LeRoundRectDrawable2(backgroundColor, radius);
         conRl.setBackground(roundRectDrawable);
-        conRl.addView(tvContext);
+        conRl.addView(tvContent);
 
         arrowImage = new ImageView(mContext);
         arrowImage.setId(View.generateViewId());
@@ -164,15 +170,42 @@ public class LeBubbleTextView extends RelativeLayout implements Runnable {
             }
         }
 
-        int arrowRes = backgroundColor == Color.parseColor("#B3000000")?R.drawable.le_bubble_arrow:R.drawable.le_bubble_arrow_light;
-
+        //int arrowRes = backgroundColor == Color.parseColor("#B3000000")?R.drawable.le_bubble_arrow_light:R.drawable.le_bubble_arrow_light;
+        int arrowRes = R.drawable.le_bubble_arrow_light;
         Bitmap source = BitmapFactory.decodeResource(this.getResources(), arrowRes);
-        arrowImage.setImageBitmap(rotateBitmap(source, r));
 
+        Bitmap rotateBitmap = rotateBitmap(source, r);
+
+        norDrawable = new TintedBitmapDrawable(mContext.getResources(),rotateBitmap,backgroundColor);
+        pressDrawable = new TintedBitmapDrawable(mContext.getResources(),rotateBitmap,pressBackgroundColor);
+
+        arrowImage.setImageDrawable(norDrawable);
         this.addView(arrowImage, arrowParams);
         this.addView(conRl, conRlParams);
 
+        arrowImage.setImageTintList(ColorStateList.valueOf(backgroundColor));
+
+        setBackground(new LeStateColorDrawable(Color.TRANSPARENT) {
+            @Override
+            protected void onIsPressed(boolean isPressed) {
+                LeRoundRectDrawable2 conRlBackground = (LeRoundRectDrawable2) conRl.getBackground();
+                if (isPressed) {
+                    conRlBackground.getPaint().setColor(pressBackgroundColor);
+                    //arrowImage.setImageTintList(ColorStateList.valueOf(pressBackgroundColor));
+                    arrowImage.setImageDrawable(pressDrawable);
+                } else {
+                    conRlBackground.getPaint().setColor(backgroundColor);
+                    //arrowImage.setImageTintList(ColorStateList.valueOf(backgroundColor));
+                    arrowImage.setImageDrawable(norDrawable);
+                }
+                conRl.invalidate();
+                arrowImage.invalidate();
+            }
+        });
+
         conRl.post(this);
+
+        this.setClickable(true);
 
     }
 
@@ -205,6 +238,11 @@ public class LeBubbleTextView extends RelativeLayout implements Runnable {
         }
 
     }
+
+    public TextView getContentTextView(){
+        return tvContent;
+    }
+
     public enum ArrowDirection {
         LEFT, TOP, RIGHT, BOTTOM
     }

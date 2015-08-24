@@ -122,4 +122,7 @@ public class LeRoundRectDrawable2 extends Drawable {
         invalidateSelf();
     }
 
+    public Paint getPaint() {
+        return mPaint;
+    }
 }

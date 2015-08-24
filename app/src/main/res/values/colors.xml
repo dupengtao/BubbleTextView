@@ -20,10 +20,13 @@
     <color name="bubbleView_light_background">#CCFFFFFF</color>
     <!-- Background color for dark LeBubbleView. -->
     <color name="bubbleView_dark_background">#B3000000</color>
-
     <!-- text color for light LeBubbleTextView. -->
     <color name="bubbleView_light_text_color">#CC323C49</color>
     <!-- text color for dark LeBubbleTextView. -->
     <color name="bubbleView_dark_text_color">#CCFFFFFF</color>
+    <!-- press Background color for light LeBubbleView. -->
+    <color name="bubbleView_light_press_background">#E6FFFFFF</color>
+    <!-- press Background color for dark LeBubbleView. -->
+    <color name="bubbleView_dark_press_background">#CC000000</color>
 
 </resources>

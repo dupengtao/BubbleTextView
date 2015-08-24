@@ -34,9 +34,9 @@
             <enum name="right" value="3"/>
             <enum name="bottom" value="4"/>
         </attr>
-
         <!-- direction for arrow. -->
         <attr name = "relativePosition" format = "fraction" />
-
+        <!-- Press state Background color for LeBubbleTextView. -->
+        <attr name="bubbleBackgroundPressColor" format="color"/>
     </declare-styleable>
 </resources>
