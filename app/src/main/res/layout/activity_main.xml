@@ -17,20 +17,23 @@
             >
 
         <!-- 深色样式，向下箭头，位置50%-->
-        <com.example.dpt.bubbletextview.widget.LeBubbleTextView
+        <com.example.dpt.bubbletextview.widget.LeBubbleTitleTextView
+                android:id="@+id/ltt1"
                 android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:bubbleText="@string/test"
+                app:bubbleText="@string/test_content"
+                app:bubbleTitleText="@string/test_title"
                 app:relativePosition="50%"
                 app:bubbleArrowDirection="bottom"
                 />
         <!-- 深色样式，向右箭头，位置50%-->
-        <com.example.dpt.bubbletextview.widget.LeBubbleTextView
+        <com.example.dpt.bubbletextview.widget.LeBubbleTitleTextView
                 android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:bubbleText="@string/hello_world"
+                app:bubbleText="@string/test_content"
+                app:bubbleTitleText="@string/test_title"
                 app:relativePosition="40%"
                 app:bubbleArrowDirection="right"
                 />
@@ -45,21 +48,23 @@
             android:background="#212121"
             >
         <!-- 浅色样式，向左箭头，位置60%-->
-        <com.example.dpt.bubbletextview.widget.LeBubbleTextView
+        <com.example.dpt.bubbletextview.widget.LeBubbleTitleTextView
                 android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:bubbleText="@string/test"
+                app:bubbleText="@string/test_content"
+                app:bubbleTitleText="@string/test_title"
                 app:relativePosition="60%"
                 app:bubbleArrowDirection="left"
                 style="@style/LeBubbleTextView.Light"
                 />
         <!-- 浅色样式，向上箭头，位置60%-->
-        <com.example.dpt.bubbletextview.widget.LeBubbleTextView
+        <com.example.dpt.bubbletextview.widget.LeBubbleTitleTextView
                 android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:bubbleText="@string/hello_world"
+                app:bubbleText="@string/test_content"
+                app:bubbleTitleText="@string/test_title"
                 app:relativePosition="60%"
                 app:bubbleArrowDirection="top"
                 style="@style/LeBubbleTextView.Light"

@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 import com.example.dpt.bubbletextview.helper.LeBubbleTextViewHelper;
+import com.example.dpt.bubbletextview.widget.LeBubbleTitleTextView;
 
 
-public class MainActivity extends Activity {
+public class MainActivity3 extends Activity {
 
 
     private boolean inited;
@@ -53,6 +56,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 helper4.show();
+                Toast.makeText(MainActivity3.this,"button 4",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -63,9 +67,16 @@ public class MainActivity extends Activity {
             inited = true;
 
             helper1 = new LeBubbleTextViewHelper();
-            helper1.init(bt1, R.layout.view_demo_bubble1);
+            helper1.init(bt1, R.layout.view_demo_bubble_title1);
             helper1.show();
-            helper1.getBubbleTextView().setOnClickListener(new View.OnClickListener() {
+            //helper1.getBubbleView().setOnClickListener(new View.OnClickListener() {
+            //    @Override
+            //    public void onClick(View v) {
+            //        helper1.dismissBubblePopupWindow();
+            //    }
+            //});
+            LeBubbleTitleTextView bubbleTitleTextView1 = (LeBubbleTitleTextView) helper1.getBubbleView();
+            bubbleTitleTextView1.setCancelImageOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     helper1.dismissBubblePopupWindow();
@@ -73,9 +84,16 @@ public class MainActivity extends Activity {
             });
 
             helper2 = new LeBubbleTextViewHelper();
-            helper2.init(bt2, R.layout.view_demo_bubble2);
+            helper2.init(bt2, R.layout.view_demo_bubble_title2);
             helper2.show();
-            helper2.getBubbleTextView().setOnClickListener(new View.OnClickListener() {
+            //helper2.getBubbleView().setOnClickListener(new View.OnClickListener() {
+            //    @Override
+            //    public void onClick(View v) {
+            //        helper2.dismissBubblePopupWindow();
+            //    }
+            //});
+            LeBubbleTitleTextView bubbleTitleTextView2 = (LeBubbleTitleTextView) helper2.getBubbleView();
+            bubbleTitleTextView2.setCancelImageOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     helper2.dismissBubblePopupWindow();
@@ -85,7 +103,7 @@ public class MainActivity extends Activity {
             helper3 = new LeBubbleTextViewHelper();
             helper3.init(bt3, R.layout.view_demo_bubble3);
             helper3.show();
-            helper3.getBubbleTextView().setOnClickListener(new View.OnClickListener() {
+            helper3.getBubbleView().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     helper3.dismissBubblePopupWindow();
@@ -95,7 +113,7 @@ public class MainActivity extends Activity {
             helper4 = new LeBubbleTextViewHelper();
             helper4.init(bt4, R.layout.view_demo_bubble4);
             helper4.show();
-            helper4.getBubbleTextView().setOnClickListener(new View.OnClickListener() {
+            helper4.getBubbleView().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     helper4.dismissBubblePopupWindow();
@@ -103,6 +121,11 @@ public class MainActivity extends Activity {
             });
 
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
     }
 
     @Override

@@ -26,7 +26,8 @@
         <attr name="bubbleTextColor" format="color"/>
         <!-- text for LeBubbleTextView. -->
         <attr name="bubbleText" format="string"/>
-
+        <!-- text for LeBubbleTitleView. -->
+        <attr name="bubbleTitleText" format="string"/>
         <!-- direction for arrow. -->
         <attr name="bubbleArrowDirection">
             <enum name="left" value="1"/>
