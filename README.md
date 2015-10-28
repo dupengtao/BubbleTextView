@@ -1,9 +1,15 @@
 # BubbleTextView
-BubbleTextView
+
+- Custom arrow position
+- Custom fillet radius
+- Custom background color
+- Can be placed anywhere
+- Two default style
+- Two default theme
 
 ## Snapshot
-![BubbleTextView](http://7d9pic.com1.z0.glb.clouddn.com/bubblew_view2.gif)
-![BubbleTextView](http://7d9pic.com1.z0.glb.clouddn.com/bubblew_view.png)
+![BubbleTextView 2.0](http://7d9pic.com1.z0.glb.clouddn.com/bubblew_view3.png)
+![BubbleTextView 1.0](http://7d9pic.com1.z0.glb.clouddn.com/bubblew_view.png)
 ## Custom Attribute
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -19,7 +25,8 @@ BubbleTextView
         <attr name="bubbleTextColor" format="color"/>
         <!-- text for LeBubbleTextView. -->
         <attr name="bubbleText" format="string"/>
-
+        <!-- text for LeBubbleTitleView. -->
+        <attr name="bubbleTitleText" format="string"/>
         <!-- direction for arrow. -->
         <attr name="bubbleArrowDirection">
             <enum name="left" value="1"/>
